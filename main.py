@@ -1,6 +1,8 @@
 from ombudsman import *
 
 ombudsman = [ ]
+author = [ ]
+
 option = 0
 
 while option != 6:
@@ -15,29 +17,26 @@ while option != 6:
     try:
       option = int(input('Escolha uma opção: '))
     except ValueError:
-      print('Por favor, insira um número inteiro válido.')
+      print('Por favor, insira um número válido.')
       continue
 
     print('\n===================================')
 
     if option == 1:
       inputReclamation = input('Fale-nos sobre sua reclamação: ')
-      newReclamation(inputReclamation, ombudsman)
+      newReclamation(inputReclamation, ombudsman, author)
 
     elif option == 2:
-      if len(ombudsman) > 0:
-        list_complaints(ombudsman)
-      else:
-        print('Sem reclamações!')
+        list_complaints(ombudsman, author)
 
     elif option == 3:
       id = int(input("Digite o código da reclamação que deseja editar: "))
-      update_complaints(id, ombudsman)
+      update_complaints(id, ombudsman, author)
 
     elif option == 4:
       id = int(input("Digite o código da reclamação para mostrar os detalhes: "))
-      detail_complaints(id, ombudsman)
+      detail_complaints(id, ombudsman, author)
 
     elif option == 5:
       id = int(input("Digite o código da reclamação para deletar: "))
-      delete_complaints(id, ombudsman)
+      delete_complaints(id, ombudsman, author)
